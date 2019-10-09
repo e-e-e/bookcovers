@@ -1,6 +1,6 @@
 # book-covers
 
-A federated search thumbnail images of book covers.
+A federated search API for finding image thumbnails for book covers.
 
 Performs a combined search of _Amazon_, _Google Books_ and _Open Library_ to find thumbnails corresponding to isbn numbers.
 
@@ -31,11 +31,9 @@ bookcovers <isbn>;
 
 ## API
 
-#### _bookcovers.withIsbn(isbn: string);_
+#### bookcovers.withIsbn(isbn: string);
 
-Returns a promise which resolves to an object containing urls from each of the sources.
-
-Example result
+Returns a promise that resolves to an object containing urls from each of the sources.
 
 ```js
 {
