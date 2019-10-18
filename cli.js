@@ -14,6 +14,7 @@ program
           for (let [source, images] of Object.entries(results)) {
             if (images === null) continue;
             for (let [qualifier, url] of Object.entries(images)) {
+              if (qualifier === "error") continue;
               console.log(source, qualifier, url);
             }
           }
