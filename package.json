@@ -1,7 +1,7 @@
 {
   "name": "bookcovers",
   "version": "0.0.1",
-  "description": "A federated search for thumbnail images of bookcovers",
+  "description": "A federated search for thumbnail images of book covers",
   "main": "index.js",
   "bin": {
     "bookcovers": "cli.js"
@@ -10,6 +10,7 @@
     "commander": "^3.0.2",
     "eslint": "^6.4.0",
     "express": "^4.17.1",
+    "library-lib": "0.0.1",
     "puppeteer": "^1.20.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
