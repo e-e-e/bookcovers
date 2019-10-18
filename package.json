@@ -1,6 +1,6 @@
 {
   "name": "bookcovers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A federated search for thumbnail images of book covers",
   "main": "index.js",
   "bin": {
