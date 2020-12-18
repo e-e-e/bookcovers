@@ -7,7 +7,7 @@
     "bookcovers": "src/cli.js"
   },
   "dependencies": {
-    "commander": "^3.0.2",
+    "commander": "^6.2.1",
     "eslint": "^6.4.0",
     "express": "^4.17.1",
     "library-lib": "0.0.1",
