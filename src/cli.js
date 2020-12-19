@@ -6,7 +6,7 @@ const bookcovers = require("./index");
 program
   .arguments("<isbn>")
   .option("-t, --type <api>", "api to use, defaults to all")
-  .action((isbn, options) => {
+  .action((isbn) => {
     bookcovers
       .withIsbn(isbn, program.opts())
       .then(results => {

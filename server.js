@@ -1,5 +1,5 @@
 const express = require("express");
-const bookcovers = require("./index");
+const bookcovers = require("./src");
 
 const port = "8080";
 const app = express();
