@@ -8,11 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/e-e-e/book-covers-api.git"
+    "url": "git+https://github.com/e-e-e/bookcovers.git"
   },
-  "homepage": "https://github.com/e-e-e/book-covers-api",
+  "homepage": "https://github.com/e-e-e/bookcovers",
   "bugs": {
-    "url": "https://github.com/e-e-e/book-covers-api/issues"
+    "url": "https://github.com/e-e-e/bookcovers/issues"
   },
   "main": "src/index.js",
   "bin": {
