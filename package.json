@@ -1,7 +1,19 @@
 {
   "name": "bookcovers",
   "version": "0.1.0",
+  "author": "e-e-e",
   "description": "A federated search for thumbnail images of book covers",
+  "engines": {
+    "node": ">=10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-e-e/book-covers-api.git"
+  },
+  "homepage": "https://github.com/e-e-e/book-covers-api",
+  "bugs": {
+    "url": "https://github.com/e-e-e/book-covers-api/issues"
+  },
   "main": "src/index.js",
   "bin": {
     "bookcovers": "src/cli.js"
@@ -16,11 +28,11 @@
     "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
+    "eslint": "^6.4.0",
     "jest": "^26.6.3"
   },
   "scripts": {
     "test": "jest"
   },
-  "author": "e-e-e",
   "license": "ISC"
 }
