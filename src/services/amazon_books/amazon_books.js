@@ -2,8 +2,8 @@ const puppeteer = require("puppeteer");
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const amazonAdvanceSearchUrl =
-  "https://www.amazon.com/Advanced-Search-Books/b?ie=UTF8&node=241582011";
+const amazonIsbnSearchUrl = isbn =>
+  `https://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=${isbn}&sort=relevanceexprank`;
 
 function parseSrcset(srcset) {
   if (!srcset) return null;
@@ -25,16 +25,9 @@ async function scrape(isbn) {
     defaultViewport: { width: 800, height: 600, deviceScaleFactor: 3 }
   });
   const page = await browser.newPage();
-  await page.goto(amazonAdvanceSearchUrl, {
+  await page.goto(amazonIsbnSearchUrl(isbn), {
     waitUntil: "networkidle2"
   });
-  await delay(100);
-  await page.type("#field-isbn", isbn);
-
-  await Promise.all([
-    page.waitForNavigation(),
-    page.click('input[name="Adv-Srch-Books-Submit"]')
-  ]);
   const images = await page.$$(".s-image");
   const srcsets = [];
   if (images.length > 0) {
