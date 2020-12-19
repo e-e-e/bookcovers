@@ -4,6 +4,12 @@ on:
   push:
   schedule:
     - cron: 0 0 * * *
+  pull_request:
+    branches:
+      - "**"
+
+env:
+  CI: true
 
 jobs:
   smoke-test:
