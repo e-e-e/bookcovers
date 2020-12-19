@@ -29,9 +29,16 @@ bookcovers <isbn>;
 # logs out book cover data in the form "<source> <size> <url>"
 ```
 
+Specify which service to use:
+
+```bash
+bookcovers <isbn> --type amazon;
+# only searches Amazon
+```
+
 ## API
 
-#### bookcovers.withIsbn(isbn: string);
+#### bookcovers.withIsbn(isbn: string, options?: { ... });
 
 Returns a promise that resolves to an object containing urls from each of the sources.
 
@@ -54,3 +61,6 @@ Returns a promise that resolves to an object containing urls from each of the so
   }
 }
 ```
+
+### Options
+- `type` - Specify a service: `'amazon' | 'google' | 'openLibrary'`. Default: `null` (all).

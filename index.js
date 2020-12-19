@@ -1,35 +1,33 @@
 const { Isbn } = require("library-lib");
-const googleBooks = require("./services/google_books/google_books");
-const openLibrary = require("./services/open_library/open_library");
-const amazonBooks = require("./services/amazon_books/amazon_books");
+const services = {
+  amazon: require("./services/amazon_books/amazon_books"),
+  google: require("./services/google_books/google_books"),
+  openLibrary: require("./services/open_library/open_library")
+};
 
 function printFailure(err) {
   return { error: err };
 }
 
-async function fetchImages(isbn) {
+async function fetchImages(isbn, options = {}) {
   const isbnData = Isbn.parse(isbn);
   const isbnVariants = isbnData.isIsbn10
     ? [isbnData.toIsbn10(), isbnData.toIsbn13()]
     : [isbnData.toIsbn13(), isbnData.toIsbn10()];
-  const amazon = amazonBooks
+  const getWithService = service => service
     .get(isbnVariants[0])
-    .then(res => res || amazonBooks.get(isbnVariants[1]))
+    .then(res => res || service.get(isbnVariants[1]))
     .catch(printFailure);
-  const google = googleBooks
-    .get(isbnVariants[0])
-    .then(res => res || googleBooks.get(isbnVariants[1]))
-    .catch(printFailure);
-  const ol = openLibrary
-    .get(isbnVariants[0])
-    .then(res => res || openLibrary.get(isbnVariants[1]))
-    .catch(printFailure);
-  const results = await Promise.all([amazon, google, ol]);
-  return {
-    amazon: results[0],
-    google: results[1],
-    openLibrary: results[2]
-  };
+  if (options.type) {
+    return {
+      [options.type]: await getWithService(services[options.type])
+    };
+  }
+  const results = await Promise.all(Object.values(services).map(getWithService));
+  return Object.keys(services).reduce((accum, key, i) => ({
+    ...accum,
+    [key]: results[i]
+  }), {});
 }
 
 module.exports = {
