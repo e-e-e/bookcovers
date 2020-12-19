@@ -4,6 +4,8 @@ A federated search API for finding image thumbnails for book covers.
 
 Performs a combined search of _Amazon_, _Google Books_ and _Open Library_ to find thumbnails corresponding to isbn numbers.
 
+_Book-covers_ is node library and cli tool. It currently does not work in browser environments.
+
 ## Install
 
 ```
@@ -41,8 +43,6 @@ bookcovers <isbn> --type amazon;
 #### bookcovers.withIsbn(isbn: string, options?: { ... });
 
 Returns a promise that resolves to an object containing urls from each of the sources.
-
-Note: This API will only work for use inside the Node.js environment but not within browser environments.
 
 ```js
 {
