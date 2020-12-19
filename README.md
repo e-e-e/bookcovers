@@ -1,10 +1,10 @@
-# book-covers
+# bookcovers
 
 A federated search API for finding image thumbnails for book covers.
 
 Performs a combined search of _Amazon_, _Google Books_ and _Open Library_ to find thumbnails corresponding to isbn numbers.
 
-_Book-covers_ is node library and cli tool. It currently does not work in browser environments.
+_bookcovers_ is node library and cli tool. It currently does not work in browser environments.
 
 ## Install
 
