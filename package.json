@@ -19,10 +19,11 @@
     "bookcovers": "src/cli.js"
   },
   "dependencies": {
-    "commander": "^3.0.2",
+    "commander": "^6.2.1",
+    "eslint": "^7.15.0",
     "express": "^4.17.1",
     "library-lib": "0.0.1",
-    "puppeteer": "^1.20.0",
+    "puppeteer": "^5.5.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },
