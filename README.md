@@ -42,6 +42,8 @@ bookcovers <isbn> --type amazon;
 
 Returns a promise that resolves to an object containing urls from each of the sources.
 
+Note: This API will only work for use inside the Node.js environment but not within browser environments.
+
 ```js
 {
   amazon: {
