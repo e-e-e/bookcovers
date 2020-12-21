@@ -9,7 +9,7 @@ program
   .action((isbn) => {
     bookcovers
       .withIsbn(isbn, program.opts())
-      .then(results => {
+      .then((results) => {
         for (let [source, images] of Object.entries(results)) {
           if (images === null) continue;
           for (let [qualifier, url] of Object.entries(images)) {
@@ -18,7 +18,7 @@ program
           }
         }
       })
-      .catch(e => {
+      .catch((e) => {
         console.error(e);
         process.exit(1);
       });

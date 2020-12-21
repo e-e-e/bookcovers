@@ -12,11 +12,11 @@ async function get(isbn) {
   }
   if (!result.items) return null;
   const images = result.items
-    .map(item => item.volumeInfo && item.volumeInfo.imageLinks)
-    .filter(a => !!a);
+    .map((item) => item.volumeInfo && item.volumeInfo.imageLinks)
+    .filter((a) => !!a);
   return images.length > 0 ? images[0] : null;
 }
 
 module.exports = {
-  get
+  get,
 };

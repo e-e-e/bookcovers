@@ -11,13 +11,14 @@ async function get(isbn) {
     await request({ uri: url.toString(), followRedirect: false });
   } catch (e) {
     switch (e.statusCode) {
-      case 302:
+      case 302: {
         const imageUrl = e.response.headers.location;
         return {
           small: imageUrl,
           medium: imageUrl.replace(/-S\./g, "-M."),
-          large: imageUrl.replace(/-S\./g, "-L.")
+          large: imageUrl.replace(/-S\./g, "-L."),
         };
+      }
       case 404:
         return null;
       default:
@@ -26,6 +27,7 @@ async function get(isbn) {
   }
   return null;
 }
+
 module.exports = {
-  get
+  get,
 };

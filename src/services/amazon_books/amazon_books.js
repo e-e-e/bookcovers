@@ -1,15 +1,13 @@
 const puppeteer = require("puppeteer");
 
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-const amazonIsbnSearchUrl = isbn =>
+const amazonIsbnSearchUrl = (isbn) =>
   `https://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=${isbn}&sort=relevanceexprank`;
 
 function parseSrcset(srcset) {
   if (!srcset) return null;
   return srcset
     .split(", ")
-    .map(d => d.split(" "))
+    .map((d) => d.split(" "))
     .reduce((p, c) => {
       if (c.length !== 2) {
         // throw new Error("Error parsing srcset.");
@@ -22,11 +20,11 @@ function parseSrcset(srcset) {
 
 async function scrape(isbn) {
   const browser = await puppeteer.launch({
-    defaultViewport: { width: 800, height: 600, deviceScaleFactor: 3 }
+    defaultViewport: { width: 800, height: 600, deviceScaleFactor: 3 },
   });
   const page = await browser.newPage();
   await page.goto(amazonIsbnSearchUrl(isbn), {
-    waitUntil: "networkidle2"
+    waitUntil: "networkidle2",
   });
   const images = await page.$$(".s-image");
   const srcsets = [];
@@ -39,7 +37,7 @@ async function scrape(isbn) {
     }
   }
   await browser.close();
-  const thumbs = srcsets.map(parseSrcset).filter(a => !!a);
+  const thumbs = srcsets.map(parseSrcset).filter((a) => !!a);
   return thumbs.length > 0 ? thumbs[0] : null;
 }
 
@@ -54,11 +52,11 @@ async function get(isbn) {
   const executeFetch = () => {
     count++;
     return scrape(isbn)
-      .then(data => {
+      .then((data) => {
         count--;
         return data;
       })
-      .catch(e => {
+      .catch((e) => {
         count--;
         throw e;
       });
