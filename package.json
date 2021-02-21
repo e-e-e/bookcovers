@@ -27,10 +27,13 @@
   },
   "devDependencies": {
     "eslint": "^7.15.0",
-    "jest": "^26.6.3"
+    "eslint-config-prettier": "^7.1.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "prettier src --write && eslint src --fix"
   },
   "license": "ISC"
 }
