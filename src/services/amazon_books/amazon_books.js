@@ -1,4 +1,6 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
+const stealth = require('puppeteer-extra-plugin-stealth')
+puppeteer.use(stealth())
 
 const amazonIsbnSearchUrl = (isbn) =>
   `https://www.amazon.com/gp/search/ref=sr_adv_b/?search-alias=stripbooks&unfiltered=1&field-isbn=${isbn}&sort=relevanceexprank`;
