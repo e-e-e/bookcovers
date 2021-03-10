@@ -4,11 +4,11 @@ const { URL } = require("url");
 const openLibraryBaseUrl = "http://covers.openlibrary.org";
 const getEndpoint = (isbn, size) => `/b/isbn/${isbn}-${size}.jpg`;
 
-async function get(isbn) {
+async function get(isbn, options = {}) {
   const url = new URL(getEndpoint(isbn, "S"), openLibraryBaseUrl);
   url.search = "?default=false";
   try {
-    await request({ uri: url.toString(), followRedirect: false });
+    await request({ uri: url.toString(), followRedirect: false, ...options });
   } catch (e) {
     switch (e.statusCode) {
       case 302: {

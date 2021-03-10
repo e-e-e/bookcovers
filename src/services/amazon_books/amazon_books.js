@@ -18,9 +18,10 @@ function parseSrcset(srcset) {
     }, {});
 }
 
-async function scrape(isbn) {
+async function scrape(isbn, options = {}) {
   const browser = await puppeteer.launch({
     defaultViewport: { width: 800, height: 600, deviceScaleFactor: 3 },
+    ...options
   });
   const page = await browser.newPage();
   await page.goto(amazonIsbnSearchUrl(isbn), {
@@ -44,14 +45,14 @@ async function scrape(isbn) {
 let previousRequest = Promise.resolve();
 let count = 0;
 
-async function get(isbn) {
+async function get(isbn, options = {}) {
   if (count >= 10) {
     throw new Error("Two many parallel requests for Amazon Image data");
   }
   // queue requests
   const executeFetch = () => {
     count++;
-    return scrape(isbn)
+    return scrape(isbn, options)
       .then((data) => {
         count--;
         return data;
