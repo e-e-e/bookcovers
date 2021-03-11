@@ -6,7 +6,7 @@ async function get(isbn, options = {}) {
   url.search = new URLSearchParams({ q: `isbn:${isbn}` }).toString();
   let result;
   try {
-    result = await request(url, { json: true, options });
+    result = await request(url, { json: true, ...options });
   } catch (e) {
     throw e.body.error;
   }
