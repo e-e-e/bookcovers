@@ -22,6 +22,8 @@
     "commander": "^6.2.1",
     "library-lib": "0.0.1",
     "puppeteer": "^5.5.0",
+    "puppeteer-extra": "^3.1.17",
+    "puppeteer-extra-plugin-stealth": "^2.7.5",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
   },

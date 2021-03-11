@@ -66,3 +66,6 @@ Returns a promise that resolves to an object containing urls from each of the so
 
 ### Options
 - `type` - Specify a service: `'amazon' | 'google' | 'openLibrary'`. Default: `null` (all).
+- `amazon` - Specify additional options for puppeteer amazon scraper
+- `google` - Specify additional options for request google scraper
+- `openLibrary` - Specify additional options for request open library scraper
