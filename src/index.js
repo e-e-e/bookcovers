@@ -25,7 +25,7 @@ async function fetchImages(isbn, options = {}) {
     };
   }
   const results = await Promise.all(
-    Object.values(services).map(name => getWithService(services[name], name))
+    Object.keys(services).map(name => getWithService(services[name], name))
   );
   return Object.keys(services).reduce(
     (accum, key, i) => ({
