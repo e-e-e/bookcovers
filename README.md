@@ -9,7 +9,7 @@ _bookcovers_ is node library and cli tool. It currently does not work in browser
 ## Install
 
 ```
-npm i -g bookcovers;
+npm i -g bookcovers
 ```
 
 ## Example Usage
